@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">SearchApp</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="booksHeaderText">Books</string>
+    <string name="appsHeaderText">Apps</string>
+    <string name="musicHeaderText">Music</string>
+    <string name="moviesHeaderText">Movies</string>
+    <string name="release_date">Release Date</string>
+    <string name="name">Name</string>
+    <string name="price">Price</string>
+    <string name="search_title">Search</string>
+</resources>

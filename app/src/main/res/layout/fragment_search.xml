@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".presentation.view.SearchFragment">
+
+
+    <SearchView
+        android:id="@+id/searchView"
+        android:queryHint="Search"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/segmentedControlGroup"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.alanvan.segmented_control.SegmentedControlGroup
+        android:id="@+id/segmentedControlGroup"
+        android:layout_width="361dp"
+        android:layout_height="30dp"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="25dp"
+
+        android:backgroundTint="#DFDFDF"
+        app:customDividerColor="#989898"
+        app:customShadowColor="#FFFFFF"
+        app:customSliderColor="#F9F9FA"
+        app:layout_constraintBottom_toTopOf="@+id/recyclerView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchView">
+
+        <com.alanvan.segmented_control.SegmentedControlButton
+            android:id="@+id/buttonMovies"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/moviesHeaderText"
+            android:textColor="#070707"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <com.alanvan.segmented_control.SegmentedControlButton
+            android:id="@+id/buttonMusic"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/musicHeaderText"
+            android:textColor="#070707"
+            tools:layout_editor_absoluteX="90dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <com.alanvan.segmented_control.SegmentedControlButton
+            android:id="@+id/buttonApps"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/appsHeaderText"
+            android:textColor="#070707"
+            tools:layout_editor_absoluteX="181dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+        <com.alanvan.segmented_control.SegmentedControlButton
+            android:id="@+id/buttonBooks"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:text="@string/booksHeaderText"
+            android:textColor="#070707"
+            tools:layout_editor_absoluteX="271dp"
+            tools:layout_editor_absoluteY="4dp" />
+
+    </com.alanvan.segmented_control.SegmentedControlGroup>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recyclerView"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="20dp"
+        android:layout_marginBottom="20dp"
+        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/segmentedControlGroup"
+        app:spanCount="2" />
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -67,11 +67,11 @@ class SearchPagingDataSource(
     }
 
     private fun convertToSearchString(entity: Entity) : String{
-        when(entity){
-            Entity.MOVIES -> return "movie"
-            Entity.MUSIC -> return "musicTrack"
-            Entity.BOOKS -> return "ebook"
-            Entity.APPS -> return "software"
+        return when(entity){
+            Entity.MOVIES -> "movie"
+            Entity.MUSIC -> "musicTrack"
+            Entity.BOOKS -> "ebook"
+            Entity.APPS -> "software"
         }
     }
 

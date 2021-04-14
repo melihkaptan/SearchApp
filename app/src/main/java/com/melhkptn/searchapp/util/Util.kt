@@ -10,6 +10,8 @@ import androidx.swiperefreshlayout.widget.CircularProgressDrawable
 import com.bumptech.glide.Glide
 import com.bumptech.glide.request.RequestOptions
 import com.melhkptn.searchapp.R
+import java.time.LocalDate
+import java.time.format.DateTimeFormatter
 
 fun ImageView.downloadImage(url: String, context: Context) {
 
@@ -22,6 +24,10 @@ fun ImageView.downloadImage(url: String, context: Context) {
         .load(url)
         .into(this)
 }
+
+fun String.convertDate(): LocalDate =
+    LocalDate.parse(this, DateTimeFormatter.ISO_DATE_TIME)
+
 
 private fun createPlaceHolder(context: Context): CircularProgressDrawable {
     return CircularProgressDrawable(context).apply {

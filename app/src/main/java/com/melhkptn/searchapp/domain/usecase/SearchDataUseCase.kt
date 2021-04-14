@@ -4,8 +4,7 @@ import com.melhkptn.searchapp.di.repository.SearchRepository
 import com.melhkptn.searchapp.domain.usecase.base.BaseUseCase
 import com.melhkptn.searchapp.domain.model.base.DataHolder
 import com.melhkptn.searchapp.domain.model.response.SearchResponse
-import com.melhkptn.searchapp.domain.model.request.SearchMovieRequest
-import com.melhkptn.searchapp.domain.model.response.Results
+import com.melhkptn.searchapp.domain.model.request.SearchRequest
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -49,7 +48,7 @@ class SearchDataUseCase @Inject constructor(
 
     override fun executeAsync(postParams: Params): Single<DataHolder<SearchResponse>> =
         searchRepository.fetchMovies(
-            SearchMovieRequest(
+            SearchRequest(
                 term = postParams.term,
                 offset = postParams.offset,
                 limit = postParams.limit,

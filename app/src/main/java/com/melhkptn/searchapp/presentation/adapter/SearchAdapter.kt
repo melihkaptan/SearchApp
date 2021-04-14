@@ -3,11 +3,15 @@ package com.melhkptn.searchapp.presentation.adapter
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.AdapterView
+import androidx.navigation.Navigation
 import androidx.paging.PagedListAdapter
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.melhkptn.searchapp.R
 import com.melhkptn.searchapp.domain.model.response.Results
+import com.melhkptn.searchapp.presentation.view.SearchFragmentDirections
+import com.melhkptn.searchapp.util.convertDate
 import com.melhkptn.searchapp.util.downloadImage
 import kotlinx.android.synthetic.main.search_item.view.*
 import java.time.LocalDate
@@ -28,17 +32,23 @@ class SearchAdapter :
 
     override fun onBindViewHolder(holder: AdapterViewHolder, position: Int) {
 
+        val currency = getItem(position)?.currency + " "
+
+        //arrange name & price
         getItem(position)?.trackName?.let { trackName ->
             holder.itemView.textViewName.text = trackName
-            holder.itemView.textViewPrice.text = getItem(position)?.trackPrice.toString() + "$"
+            holder.itemView.textViewPrice.text = getItem(position)?.trackPrice.toString() + currency
         } ?: kotlin.run {
             holder.itemView.textViewName.text = getItem(position)?.collectionName
-            holder.itemView.textViewPrice.text = getItem(position)?.collectionPrice.toString() + "$"
+            holder.itemView.textViewPrice.text = getItem(position)?.collectionPrice.toString() + currency
         }
 
-        val date = LocalDate.parse(getItem(position)?.releaseDate, DateTimeFormatter.ISO_DATE_TIME)
-        holder.itemView.textViewReleaseDate.text = date.year.toString()
+        //getting date
+        getItem(position)?.releaseDate?.let {
+            holder.itemView.textViewReleaseDate.text = it.convertDate().year.toString()
+        }
 
+        //download Images
         getItem(position)?.artworkUrl100?.let {
             holder.itemView.imageView.downloadImage(
                 it,
@@ -46,6 +56,11 @@ class SearchAdapter :
             )
         }
 
+        //click listener
+        holder.itemView.setOnClickListener {
+            val action = SearchFragmentDirections.actionSearchFragmentToDetailFragment(getItem(position)!!)
+            Navigation.findNavController(it).navigate(action)
+        }
     }
 
 }

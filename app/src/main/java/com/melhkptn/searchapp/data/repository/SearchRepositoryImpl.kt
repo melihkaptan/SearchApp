@@ -4,16 +4,16 @@ import com.melhkptn.searchapp.data.base.DataSource
 import com.melhkptn.searchapp.di.repository.SearchRepository
 import com.melhkptn.searchapp.domain.model.base.DataHolder
 import com.melhkptn.searchapp.domain.model.response.SearchResponse
-import com.melhkptn.searchapp.domain.model.request.SearchMovieRequest
+import com.melhkptn.searchapp.domain.model.request.SearchRequest
 import io.reactivex.Single
 import javax.inject.Inject
 
 class SearchRepositoryImpl @Inject constructor(
-    private val searchMovieRemoteDataSource: DataSource.RequestRemoteDataSource<SearchMovieRequest, SearchResponse>
+    private val searchRemoteDataSource: DataSource.RequestRemoteDataSource<SearchRequest, SearchResponse>
 ) : SearchRepository {
 
-    override fun fetchMovies(request: SearchMovieRequest): Single<DataHolder<SearchResponse>> =
-        searchMovieRemoteDataSource.getResult(request)
+    override fun fetchMovies(request: SearchRequest): Single<DataHolder<SearchResponse>> =
+        searchRemoteDataSource.getResult(request)
             .onErrorReturn {
                 DataHolder.Fail(Error(it.message))
             }

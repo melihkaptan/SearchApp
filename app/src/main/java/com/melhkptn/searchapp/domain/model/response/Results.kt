@@ -1,8 +1,10 @@
 package com.melhkptn.searchapp.domain.model.response
 
+import android.os.Parcelable
 import com.google.gson.annotations.SerializedName
+import kotlinx.android.parcel.Parcelize
 
-
+@Parcelize
 data class Results(
     @SerializedName("wrapperType") val wrapperType : String,
     @SerializedName("kind") val kind : String,
@@ -34,5 +36,7 @@ data class Results(
     @SerializedName("country") val country : String,
     @SerializedName("currency") val currency : String,
     @SerializedName("primaryGenreName") val primaryGenreName : String,
-    @SerializedName("isStreamable") val isStreamable : Boolean
-)
+    @SerializedName("isStreamable") val isStreamable : Boolean,
+    @SerializedName("longDescription") val longDescription: String,
+    @SerializedName("description") val description: String
+) : Parcelable

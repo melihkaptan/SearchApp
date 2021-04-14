@@ -1,16 +1,12 @@
 package com.melhkptn.searchapp.presentation.view
 
 import android.os.Bundle
-import android.view.View
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
-import android.widget.Toast
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.GridLayoutManager
 import com.melhkptn.searchapp.R
-import com.melhkptn.searchapp.domain.model.base.DataHolder
-import com.melhkptn.searchapp.domain.model.request.SearchMovieRequest
 import com.melhkptn.searchapp.presentation.adapter.SearchAdapter
 import com.melhkptn.searchapp.presentation.viewmodel.SearchViewModel
 import com.melhkptn.searchapp.util.Entity
@@ -19,8 +15,6 @@ import com.melhkptn.searchapp.util.hideKeyboard
 import com.melhkptn.searchapp.util.show
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_search.*
-import kotlinx.coroutines.delay
-import javax.inject.Inject
 
 
 @AndroidEntryPoint
@@ -32,42 +26,13 @@ class SearchFragment : BaseFragment() {
     var selectedSection = Entity.MOVIES
 
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        viewModel.searchQuery(INITIAL_SEARCH_QUERY, Entity.MOVIES)
-    }
-
     override fun initView() {
         super.initView()
+        viewModel.searchQuery(INITIAL_SEARCH_QUERY, Entity.MOVIES)
 
         initRecyclerView()
         initObservers()
-
-
-        segmentedControlGroup.setOnSelectedOptionChangeCallback {
-            when (it) {
-                Entity.MOVIES.ordinal ->
-                    selectedSection = Entity.MOVIES
-                Entity.MUSIC.ordinal ->
-                    selectedSection = Entity.MUSIC
-                Entity.APPS.ordinal ->
-                    selectedSection = Entity.APPS
-                Entity.BOOKS.ordinal ->
-                    selectedSection = Entity.BOOKS
-            }
-
-            viewModel.searchQuery(
-                "",
-                selectedSection
-            )
-
-            viewModel.searchQuery(
-                searchView.query.toString(),
-                selectedSection
-            )
-
-        }
-
+        initHeaders()
         initSearchView()
 
     }
@@ -119,8 +84,36 @@ class SearchFragment : BaseFragment() {
         }
     }
 
+    private fun initHeaders() {
+
+        segmentedControlGroup.setOnSelectedOptionChangeCallback {
+            when (it) {
+                Entity.MOVIES.ordinal ->
+                    selectedSection = Entity.MOVIES
+                Entity.MUSIC.ordinal ->
+                    selectedSection = Entity.MUSIC
+                Entity.APPS.ordinal ->
+                    selectedSection = Entity.APPS
+                Entity.BOOKS.ordinal ->
+                    selectedSection = Entity.BOOKS
+            }
+
+            viewModel.searchQuery(
+                "",
+                selectedSection
+            )
+
+            viewModel.searchQuery(
+                searchView.query.toString(),
+                selectedSection
+            )
+
+        }
+    }
+
+
     companion object {
-        const val INITIAL_SEARCH_QUERY = "jack"
+        const val INITIAL_SEARCH_QUERY = "harry"
     }
 
 }

@@ -83,8 +83,8 @@ dependencies {
     kapt "androidx.hilt:hilt-compiler:$hiltAndroidXVersion" //When using Kotlin.
     implementation("com.squareup.okhttp3:logging-interceptor:4.9.1")
     implementation 'com.github.alanvan0502:segmented-control-group:v1.0'
-    implementation "androidx.paging:paging-runtime:$paging_version" // For Kotlin use paging-runtime-ktx
+    implementation "androidx.paging:paging-runtime-ktx:$paging_version" // For Kotlin use paging-runtime-ktx
     // optional - RxJava support
-    implementation "androidx.paging:paging-rxjava2:$paging_version" // For Kotlin use paging-rxjava2-ktx
+    implementation "androidx.paging:paging-rxjava2-ktx:$paging_version" // For Kotlin use paging-rxjava2-ktx
 
 }

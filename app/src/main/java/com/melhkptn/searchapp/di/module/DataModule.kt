@@ -6,7 +6,7 @@ import com.melhkptn.searchapp.data.source.remote.SearchAPI
 import com.melhkptn.searchapp.data.source.remote.SearchMoviesRemoteDataSource
 import com.melhkptn.searchapp.di.repository.SearchRepository
 import com.melhkptn.searchapp.domain.model.response.SearchResponse
-import com.melhkptn.searchapp.domain.model.request.SearchMovieRequest
+import com.melhkptn.searchapp.domain.model.request.SearchRequest
 import com.melhkptn.searchapp.domain.usecase.base.BaseUseCase
 import com.melhkptn.searchapp.domain.usecase.SearchDataUseCase
 import dagger.Module
@@ -22,7 +22,7 @@ object DataModule {
 
     @Provides
     @Singleton
-    fun provideSearchMoviesRemoteDataSource(apiService: SearchAPI): DataSource.RequestRemoteDataSource<SearchMovieRequest, SearchResponse> =
+    fun provideSearchMoviesRemoteDataSource(apiService: SearchAPI): DataSource.RequestRemoteDataSource<SearchRequest, SearchResponse> =
         SearchMoviesRemoteDataSource(apiService)
 
     @Provides

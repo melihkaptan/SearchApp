@@ -1,12 +1,10 @@
 package com.melhkptn.searchapp.presentation.view
 
-import android.os.Bundle
 import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
 import androidx.paging.LoadState
-import androidx.paging.LoadType
 import androidx.recyclerview.widget.GridLayoutManager
 import com.melhkptn.searchapp.R
 import com.melhkptn.searchapp.domain.paging.MovieLoadStateAdapter
@@ -30,7 +28,7 @@ class SearchFragment : BaseFragment() {
 
     override fun initView() {
         super.initView()
-        viewModel.searchQuery(INITIAL_SEARCH_QUERY, Entity.MOVIES)
+        viewModel.searchQuery(INITIAL_SEARCH_QUERY, selectedSection)
 
         initRecyclerView()
         initObservers()

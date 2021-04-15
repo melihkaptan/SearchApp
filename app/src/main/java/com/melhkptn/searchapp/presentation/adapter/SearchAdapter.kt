@@ -1,5 +1,6 @@
 package com.melhkptn.searchapp.presentation.adapter
 
+import android.annotation.SuppressLint
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -30,6 +31,7 @@ class SearchAdapter :
     }
 
 
+    @SuppressLint("SetTextI18n")
     override fun onBindViewHolder(holder: AdapterViewHolder, position: Int) {
 
         val currency =  " " + getItem(position)?.currency

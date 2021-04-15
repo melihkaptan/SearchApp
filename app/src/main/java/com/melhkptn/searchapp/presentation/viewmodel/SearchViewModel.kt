@@ -21,10 +21,7 @@ class SearchViewModel @ViewModelInject constructor(
 ) : BaseViewModel() {
 
     var searchQueryLiveData = MutableLiveData<String>()
-    val loadingProgressBar = MutableLiveData<Boolean>()
-
     var entity = MutableLiveData<Entity>(Entity.MOVIES)
-
     val searchResultLiveData: LiveData<PagedList<Results>>
 
     init {
@@ -48,10 +45,8 @@ class SearchViewModel @ViewModelInject constructor(
 
 
     fun searchQuery(query: String, entity: Entity?) {
-        loadingProgressBar.value = true
         searchQueryLiveData.value = query
         this.entity.value = entity
-        loadingProgressBar.value = false
     }
 
 }

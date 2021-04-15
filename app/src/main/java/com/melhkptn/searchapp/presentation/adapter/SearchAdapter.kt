@@ -32,7 +32,7 @@ class SearchAdapter :
 
     override fun onBindViewHolder(holder: AdapterViewHolder, position: Int) {
 
-        val currency = getItem(position)?.currency + " "
+        val currency =  " " + getItem(position)?.currency
 
         //arrange name & price
         getItem(position)?.trackName?.let { trackName ->

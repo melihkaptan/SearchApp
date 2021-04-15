@@ -5,8 +5,11 @@ import android.view.inputmethod.EditorInfo
 import android.widget.SearchView
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.Observer
+import androidx.paging.LoadState
+import androidx.paging.LoadType
 import androidx.recyclerview.widget.GridLayoutManager
 import com.melhkptn.searchapp.R
+import com.melhkptn.searchapp.domain.paging.MovieLoadStateAdapter
 import com.melhkptn.searchapp.presentation.adapter.SearchAdapter
 import com.melhkptn.searchapp.presentation.viewmodel.SearchViewModel
 import com.melhkptn.searchapp.util.Entity
@@ -25,7 +28,6 @@ class SearchFragment : BaseFragment() {
     override fun getLayoutRes() = R.layout.fragment_search
     var selectedSection = Entity.MOVIES
 
-
     override fun initView() {
         super.initView()
         viewModel.searchQuery(INITIAL_SEARCH_QUERY, Entity.MOVIES)
@@ -34,12 +36,27 @@ class SearchFragment : BaseFragment() {
         initObservers()
         initHeaders()
         initSearchView()
+        initProgressBar()
 
+    }
+
+    private fun initProgressBar(){
+        // show the loading state for te first load
+        adapter.addLoadStateListener { _, loadState: LoadState ->
+            if (loadState is LoadState.Loading && adapter.itemCount == 0)
+                progressBar.show()
+            else {
+                progressBar.hide()
+            }
+        }
     }
 
     private fun initRecyclerView() {
         recyclerView.layoutManager = GridLayoutManager(context, 2)
-        recyclerView.adapter = adapter
+
+        recyclerView.adapter = adapter.withLoadStateFooter(
+            footer = MovieLoadStateAdapter {}
+        )
 
     }
 
@@ -48,15 +65,6 @@ class SearchFragment : BaseFragment() {
             adapter.submitList(it)
         })
 
-        viewModel.loadingProgressBar.observe(viewLifecycleOwner, Observer {
-            if (it) {
-                progressBar.show()
-                recyclerView.hide()
-            } else {
-                progressBar.hide()
-                recyclerView.show()
-            }
-        })
     }
 
     private fun initSearchView() {

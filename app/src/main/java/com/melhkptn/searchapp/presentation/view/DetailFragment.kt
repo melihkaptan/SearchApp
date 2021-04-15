@@ -2,6 +2,7 @@ package com.melhkptn.searchapp.presentation.view
 
 import android.content.Intent
 import android.net.Uri
+import android.widget.Toast
 import com.melhkptn.searchapp.R
 import com.melhkptn.searchapp.domain.model.response.Results
 import com.melhkptn.searchapp.util.convertDate
@@ -10,7 +11,7 @@ import kotlinx.android.synthetic.main.fragment_detail.*
 
 class DetailFragment : BaseFragment() {
 
-    private var url : String? = null
+    private var url: String? = null
 
     override fun getLayoutRes(): Int = R.layout.fragment_detail
 
@@ -37,6 +38,8 @@ class DetailFragment : BaseFragment() {
             url?.let {
                 val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
                 startActivity(intent)
+            } ?: kotlin.run {
+                Toast.makeText(context, "No preview source", Toast.LENGTH_LONG).show()
             }
 
         }

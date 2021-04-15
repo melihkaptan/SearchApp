@@ -7,7 +7,7 @@ import io.reactivex.Single
 
 interface SearchRepository {
 
-    fun fetchMovies(
+    fun fetchData(
         request: SearchRequest
     ): Single<DataHolder<SearchResponse>>
 }

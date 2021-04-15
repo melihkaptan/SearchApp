@@ -47,7 +47,7 @@ class SearchDataUseCase @Inject constructor(
     }
 
     override fun executeAsync(postParams: Params): Single<DataHolder<SearchResponse>> =
-        searchRepository.fetchMovies(
+        searchRepository.fetchData(
             SearchRequest(
                 term = postParams.term,
                 offset = postParams.offset,

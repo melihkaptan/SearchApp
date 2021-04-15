@@ -12,7 +12,7 @@ class SearchRepositoryImpl @Inject constructor(
     private val searchRemoteDataSource: DataSource.RequestRemoteDataSource<SearchRequest, SearchResponse>
 ) : SearchRepository {
 
-    override fun fetchMovies(request: SearchRequest): Single<DataHolder<SearchResponse>> =
+    override fun fetchData(request: SearchRequest): Single<DataHolder<SearchResponse>> =
         searchRemoteDataSource.getResult(request)
             .onErrorReturn {
                 DataHolder.Fail(Error(it.message))

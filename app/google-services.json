@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "669465865346",
+    "project_id": "searchapp-e5d66",
+    "storage_bucket": "searchapp-e5d66.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:669465865346:android:4e8b8ba0462292e991989b",
+        "android_client_info": {
+          "package_name": "com.melhkptn.searchapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "669465865346-fbofg5jeoa7k3mlihq055m8bdcilao4f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBaNXZuIfPpDU8I0bmIJ0fmpoRLYfOeHWA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "669465865346-fbofg5jeoa7k3mlihq055m8bdcilao4f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
